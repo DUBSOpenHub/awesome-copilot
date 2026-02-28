@@ -5,6 +5,10 @@ on:
     - cron: '0 3 * * 0' # Weekly on Sundays at 3am UTC
   workflow_dispatch: # Manual trigger
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   contributors:
     runs-on: ubuntu-latest
